@@ -15,8 +15,8 @@ func runBasicComparison() {
 	fmt.Println("N-Queens Problem Solver - Basic Comparison")
 	fmt.Println("==========================================")
 
-	//testSizes := []int{10, 15, 20, 30, 50, 100, 200}
-	testSizes := []int{5, 10, 15, 20, 25}
+	testSizes := []int{10, 15, 20, 30, 50, 100, 200}
+	//testSizes := []int{5, 10, 15, 20, 25}
 
 	for _, n := range testSizes {
 		fmt.Printf("\nTesting N = %d\n", n)
@@ -35,11 +35,16 @@ func runBasicComparison() {
 		}
 
 		// Test Greedy Search
-		testAlgorithmWithSolution("Greedy Hill Climbing", n, func() (bool, func()) {
-			solver := NewGreedySolver(n)
-			success := solver.Solve()
-			return success, func() { solver.PrintSolution() }
-		})
+		if n <= 50 {
+			testAlgorithmWithSolution("Greedy Hill Climbing", n, func() (bool, func()) {
+				solver := NewGreedySolver(n)
+				success := solver.Solve()
+				return success, func() { solver.PrintSolution() }
+			})
+		} else {
+			fmt.Printf("%-20s: Time: %12s, Memory: %8s, Success: %s\n",
+				"Greedy Hill Climbing", "SKIPPED", "N/A", "N/A (too large)")
+		}
 
 		// Test Simulated Annealing
 		testAlgorithmWithSolution("Simulated Annealing", n, func() (bool, func()) {
