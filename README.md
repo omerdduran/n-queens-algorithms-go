@@ -49,8 +49,9 @@ go run *.go
 
 This will test all four algorithms on N = 10, 30, 50, 100, and 200, measuring:
 - Execution time
-- Memory usage
+- Memory usage (both TotalAlloc and HeapAlloc)
 - Success rate
+- Visual solution boards (ASCII format) for successful solutions
 
 ### Example Output
 ```
@@ -59,10 +60,38 @@ N-Queens Problem Solver - Basic Comparison
 
 Testing N = 5
 --------------------------------------------------
-Exhaustive DFS      : Time:    125.5µs, Memory:       4 KB, Success: true
-Greedy Hill Climbing: Time:  1.234567ms, Memory:       8 KB, Success: true  
-Simulated Annealing : Time:  2.345678ms, Memory:      12 KB, Success: true
-Genetic Algorithm   : Time: 15.678901ms, Memory:      45 KB, Success: true
+Exhaustive DFS      : Time:     12.5µs, Memory:        0 KB (Heap: 0 KB), Success: true
+Exhaustive Search Solution for N=5:
+Q . . . .
+. . Q . .
+. . . . Q
+. Q . . .
+. . . Q .
+
+Greedy Hill Climbing: Time:   156.25µs, Memory:        1 KB (Heap: 1 KB), Success: true
+Greedy Search Solution for N=5:
+. Q . . .
+. . . Q .
+Q . . . .
+. . Q . .
+. . . . Q
+
+Simulated Annealing : Time:   2.145ms, Memory:      245 KB (Heap: 12 KB), Success: true
+Simulated Annealing Solution for N=5:
+. . Q . .
+Q . . . .
+. . . Q .
+. Q . . .
+. . . . Q
+
+Genetic Algorithm   : Time:   1.789ms, Memory:       89 KB (Heap: 89 KB), Success: true
+Genetic Algorithm Solution for N=5:
+. . . Q .
+Q . . . .
+. . Q . .
+. . . . Q
+. Q . . .
+
 ```
 
 ## Algorithm Parameters
